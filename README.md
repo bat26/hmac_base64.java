@@ -25,7 +25,7 @@ If you are FTP'ing to a server, make sure you use binary transfer mode to preven
 
 Minimum of Java 1.6.0.29
 
-If in doubt of JRE on the system, type ' java -version'
+If in doubt of JRE on the system, type ` java -version`
 
 ## License
 
