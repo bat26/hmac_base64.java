@@ -16,8 +16,8 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
-import com.CommandOptions;
-import com.Main;
+import app.CommandOptions;
+import app.Main;
 
 
 
@@ -33,7 +33,7 @@ public class Posix
 	private Options comOptions;
 	private String[] args;
 	private static Logger log = Logger.getLogger(Main.class.getName());
-
+	
 	public Posix(String[] args)
 	{
 		this.comOptions = new CommandOptions().getCommandOptions();
@@ -46,10 +46,7 @@ public class Posix
 	 */
 	public CommandLine parseArgs() throws ParseException
 	{
-		PosixParser posPar = new PosixParser();
-		CommandLine cl = null;
-		cl = posPar.parse(this.comOptions, this.args);
-		return cl;
+		return new PosixParser().parse(comOptions, args);
 	}
 
 }

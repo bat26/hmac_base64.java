@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import com.Main;
+import app.Main;
 
 
 
@@ -61,7 +61,7 @@ public class MainTest
 	}
 
 	/**
-	 * Test method for {@link com.Main#getLogLevel(java.lang.String)}.
+	 * Test method for {@link app.Main#getLogLevel(java.lang.String)}.
 	 */
 	@Test
 	public void testSetLogLevel()
@@ -76,11 +76,11 @@ public class MainTest
 	}
 
 	/**
-	 * Test method for {@link com.Main#doHMAC(java.lang.String)}.
-	 * @throws IOException 
+	 * Test method for {@link app.Main#doHMAC(java.lang.String)}.
+	 * @throws Exception 
 	 */
 	@Test
-	public void testDoHMAC() throws IOException
+	public void testDoHMAC() throws Exception
 	{
 		try
 		{
@@ -123,7 +123,7 @@ public class MainTest
 	}
 
 	/**
-	 * Test method for {@link com.Main#doBase(byte[])}.
+	 * Test method for {@link app.Main#doBase(byte[])}.
 	 */
 	@Test
 	public void testDoBase()
@@ -131,7 +131,7 @@ public class MainTest
 	}
 
 	/**
-	 * Test method for {@link com.Main#handleInput()}.
+	 * Test method for {@link app.Main#handleInput()}.
 	 */
 	@Test
 	public void testHandleInput()
@@ -139,7 +139,7 @@ public class MainTest
 	}
 
 	/**
-	 * Test method for {@link com.Main#handleOutput()}.
+	 * Test method for {@link app.Main#handleOutput()}.
 	 */
 	@Test
 	public void testHandleOutput()
@@ -147,7 +147,7 @@ public class MainTest
 	}
 
 	/**
-	 * Test method for {@link com.Main#main(java.lang.String[])}.
+	 * Test method for {@link app.Main#main(java.lang.String[])}.
 	 */
 	@Test
 	public void testMain()

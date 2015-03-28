@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com;
+package app;
 
 
 
@@ -38,11 +38,11 @@ public class Main
 	 */
 	private static enum methods
 	{
-		base, hmac_base
+		BASE, HMAC_BASE
 	}
 
 	/*
-	 * Sets the loglevel
+	 *  If the log flag has been specified then set the level to debug 
 	 */
 	public static void setLogLevel()
 	{
@@ -53,14 +53,14 @@ public class Main
 		}
 		else
 			log.setLevel(Level.OFF);
-
 	}
 
 	/*
-	 * Perform HMAC operation
+	 * Perform HMAC operation on passed in string
 	 */
-	public static byte[] doHMAC(String str) throws InvalidKeyException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, UnsupportedEncodingException
+	public static byte[] doHMAC(String str) throws Exception
 	{
+		HMAC hmac = null;
 		log.info("Input string for HMAC : " + str);
 		if (cl.hasOption("hash") && cl.hasOption("key"))
 		{
@@ -68,33 +68,30 @@ public class Main
 			String hashMethod = cl.getOptionValue("hash");
 			log.info("Hashing algorithm being used is : " + hashMethod);
 			log.info("Secret key is : " + hashKey);
-
-			HMAC hmac = new HMAC(hashKey.getBytes(), hashMethod);
+			hmac = new HMAC(hashKey.getBytes(), hashMethod);
 			hmac.generateHash(str);
-			return hmac.getHash();
 		}
 		else
 		{
 			if (cl.hasOption("hash"))
 			{
 				log.error("No key given for HMAC.");
-				System.exit(-1);
+				throw new Exception("No hashing key given for HMAC to use.");
 			}
 			if (cl.hasOption("key"))
 			{
 				log.error("No hashing algorithm given for HMAC.");
-				System.exit(-1);
+				throw new Exception("No hashing algorithm given for HMAC, refer to readme for accepted HMAC methods");
 			}
 
 		}
-		return null;
-
+		return hmac.getHash();
 	}
 
 	/*
 	 * @param str Perform Base operation
 	 */
-	public static byte[] doBase(byte[] bs) throws UnsupportedEncodingException
+	public static byte[] doBase(byte[] bs) throws Exception
 	{
 		log.info("Input string for Base : " + bs);
 
@@ -120,16 +117,14 @@ public class Main
 		else if (cl.hasOption("decode") && cl.hasOption("encode"))
 		{
 			log.error("Both encode and decode methods have been called, remove one method.");
-			System.exit(-1);
+			throw new Exception("Both encode and decode methods have been called, remove one method.");
 		}
 
 		else
 		{
 			log.error("No base operation specified.");
-			System.exit(-1);
+			throw new Exception("No base encoding operation specified.");
 		}
-
-		return null;
 	}
 
 	/*
@@ -188,6 +183,8 @@ public class Main
 	}
 
 	/**
+	 * The main function starts off with parsing the arguments from command line, if sanity checking is passed on these arguments then it will
+	 * carry out whatever instructions specified from the shell.
 	 * @param args
 	 */
 	public static void main(String[] args)
@@ -226,6 +223,11 @@ public class Main
 						System.out.println(e.getLocalizedMessage() + ", please ensure file and current working directory is writable.");
 						System.exit(-1);
 					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				}
 				// do hmac and base
@@ -263,6 +265,11 @@ public class Main
 					{
 						System.out.println(e.getLocalizedMessage() + ", please ensure file and current working directory is writable.");
 						System.exit(-1);
+					}
+					catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 				// default

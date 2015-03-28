@@ -72,9 +72,7 @@ public class HMAC
 		Mac mac = Mac.getInstance(sKey.getAlgorithm());
 		mac.init(sKey);
 		hash = mac.doFinal(str.getBytes());
-		new Hex();
 		log.info("Successfully generated hash, hexadecimal value is : " + Hex.encodeHexString(hash));
-
 	}
 	
 	/*

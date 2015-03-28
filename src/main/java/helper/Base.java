@@ -71,7 +71,7 @@ public class Base
 			base64Decode(str);
 		}
 
-		else if (baseMethod.toLowerCase().equals("Base32"))
+		else if (baseMethod.toLowerCase().equals("base32")) //fixed case sensitivity bug
 		{
 			// log.info("Call base32Decode(" + str + ")");
 			base32Decode(str);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com;
+package app;
 
 import org.apache.commons.cli.Options;
 
