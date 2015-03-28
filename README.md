@@ -1,10 +1,10 @@
-HMAC_BASE
+HMAC_BASE64
 =========
 
 
 ##About
 
-HMAC BASE was created for Solaris and Windows servers that were missing utilities to create Hash-based Message Authentication codes that could be encoded in Base64/32 format. 
+hmac_base64 was created for Solaris and Windows servers that were missing utilities to create Hash-based Message Authentication codes that could then be encoded in Base64/32 format. 
 Nowadays in modern Unix systems with the latest packages of OpenSSL and Base64 you can easily pipe the output from one process to another.
 However if you are stuck due to server environment limitations, then this tool can help you out.
 
