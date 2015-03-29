@@ -27,7 +27,7 @@ public class Base
 
 	public enum validBaseMethods
 	{
-		base64, base32
+		BASE64,BASE32
 	}
 
 	public Base()
